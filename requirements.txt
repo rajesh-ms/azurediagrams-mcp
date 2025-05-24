@@ -1,0 +1,7 @@
+mcp>=1.0.0
+fastmcp>=0.3.0
+diagrams>=0.24.0
+requests>=2.31.0
+graphviz>=0.20.0
+python-dotenv>=1.0.0
+openai>=1.0.0
