@@ -17,6 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY azure_diagram_server.py .
+COPY docker_mcp_server.py .
 
 # Expose port for the server
 EXPOSE 8000
@@ -24,5 +25,5 @@ EXPOSE 8000
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 
-# Run the MCP server
-CMD ["python", "azure_diagram_server.py"]
+# Run the Docker MCP server
+CMD ["python", "docker_mcp_server.py"]

@@ -1,0 +1,4 @@
+{
+    "description": "Create a microservices architecture with Azure App Service for web frontend, Azure Functions for API processing, Azure SQL Database for data storage, Azure Storage Account for file uploads, Azure Application Gateway for load balancing, and Azure Key Vault for secrets management",
+    "output_format": "png"
+}
