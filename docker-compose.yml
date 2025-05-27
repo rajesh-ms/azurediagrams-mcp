@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  azure-diagram-mcp:
+    build: .
+    container_name: azure-diagram-mcp-server
+    ports:
+      - "8000:8000"
+    environment:
+      - AZURE_OPENAI_ENDPOINT=${AZURE_OPENAI_ENDPOINT}
+      - AZURE_OPENAI_API_KEY=${AZURE_OPENAI_API_KEY}
+      - AZURE_OPENAI_DEPLOYMENT=${AZURE_OPENAI_DEPLOYMENT:-gpt-4}
+      - AZURE_OPENAI_API_VERSION=${AZURE_OPENAI_API_VERSION:-2024-02-15-preview}
+    volumes:
+      - ./output:/app/output
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
