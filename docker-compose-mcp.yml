@@ -6,19 +6,18 @@ services:
     image: azure-diagram-mcp:latest
     container_name: azure-diagram-mcp-server
     ports:
-      - "8000:8000"
+        - "8000:8000"
+    env_file:
+        - .env
     environment:
       - PYTHONUNBUFFERED=1
-      # Azure OpenAI configuration (optional)
-      - AZURE_OPENAI_ENDPOINT=${AZURE_OPENAI_ENDPOINT:-}
-      - AZURE_OPENAI_API_KEY=${AZURE_OPENAI_API_KEY:-}
-      - AZURE_OPENAI_DEPLOYMENT=${AZURE_OPENAI_DEPLOYMENT:-gpt-4}
-      - AZURE_OPENAI_API_VERSION=${AZURE_OPENAI_API_VERSION:-2024-08-01-preview}
     volumes:
       # Mount output directory for generated diagrams
       - ./output:/app/output
       # Mount current directory for development (optional)
       - .:/app/workspace:ro
+      # Mount .env file directly into container
+      - ./.env:/app/.env:ro
     networks:
       - mcp-network
     restart: unless-stopped

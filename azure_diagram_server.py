@@ -57,7 +57,7 @@ try:
     from diagrams.azure.web import AppServices as WebApps
     from diagrams.azure.analytics import LogAnalyticsWorkspaces
     from diagrams.azure.security import KeyVaults
-    from diagrams.azure.integration import ServiceBus
+    from diagrams.azure.integration import AzureServiceBus as ServiceBus
     try:
         from diagrams.azure.ml import MachineLearningServiceWorkspaces as MachineLearningServices
     except ImportError:
@@ -132,7 +132,7 @@ class GenericStorage:
 # Azure OpenAI configuration
 AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
 AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
-AZURE_OPENAI_DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4")
+AZURE_OPENAI_DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4o")
 AZURE_OPENAI_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION", "2024-08-01-preview")
 
 # Try to import OpenAI client

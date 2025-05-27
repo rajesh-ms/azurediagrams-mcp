@@ -115,10 +115,10 @@ def test_diagram_generation():
         print("Testing NLP processing...")
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        
         nlp_result = loop.run_until_complete(generator.process_text_with_nlp(test_description))
         print(f"NLP Result: {nlp_result}")
-          # Test diagram generation
+        
+        # Test diagram generation
         print("Testing diagram generation...")
         
         # Use the correct method and parameters
@@ -127,16 +127,19 @@ def test_diagram_generation():
             output_format="png",
             layout_direction="TB"
         )
+        
+        print(f"Generated diagram size: {len(diagram_bytes)} bytes")
+        
+        # Save the diagram to verify
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
+            f.write(diagram_bytes)
+            output_path = f.name
             
-            print(f"Diagram generation result: {diagram_result}")
-            
-            # Check if files were created
-            png_file = output_path + ".png"
-            if os.path.exists(png_file):
-                print(f"✅ Diagram created successfully: {png_file}")
-                print(f"File size: {os.path.getsize(png_file)} bytes")
-            else:
-                print("❌ Diagram file not found")
+        if os.path.exists(output_path):
+            print(f"✅ Diagram created successfully: {output_path}")
+            print(f"File size: {os.path.getsize(output_path)} bytes")
+        else:
+            print("❌ Diagram file not found")
         
         print("✅ Diagram generation test completed")
         
